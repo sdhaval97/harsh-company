@@ -1,0 +1,65 @@
+﻿
+> harsh-company@0.0.0 build
+> vite build
+
+[36mvite v8.0.0 [32mbuilding client environment for production...[36m[39m
+[2K
+transforming...Γ£ô 1728 modules transformed.
+node.exe : [31mΓ£ù[39m Build failed in 429ms
+At line:1 char:1
++ & "C:\Program Files\nodejs/node.exe" "C:\Program 
+Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([31mΓ£ù[39m  
+   Build failed in 429ms:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+[31merror during build:
+[31mBuild failed with 1 error:
+
+[plugin vite:css] 
+D:/Business/harsh-company/src/index.css:1:0
+CssSyntaxError: [postcss] 
+D:/Business/harsh-company/src/index.css:1:1: The 
+`border-border` class does not exist. If `border-border` is 
+a custom class, make sure it is defined within a `@layer` 
+directive.
+    at Input.error (D:\Business\harsh-company\node_modules\p
+ostcss\lib\input.js:135:16)
+    at AtRule.error (D:\Business\harsh-company\node_modules\
+postcss\lib\node.js:146:32)
+    at processApply (D:\Business\harsh-company\node_modules\
+tailwindcss\lib\lib\expandApplyAtRules.js:380:29)
+    at D:\Business\harsh-company\node_modules\tailwindcss\li
+b\lib\expandApplyAtRules.js:551:9
+    at D:\Business\harsh-company\node_modules\tailwindcss\li
+b\processTailwindFeatures.js:55:50
+    at async plugins (D:\Business\harsh-company\node_modules
+\tailwindcss\lib\plugin.js:38:17)
+    at async LazyResult.runAsync (D:\Business\harsh-company\
+node_modules\postcss\lib\lazy-result.js:293:11)
+    at async runPostCSS (file:///D:/Business/harsh-company/n
+ode_modules/vite/dist/node/chunks/node.js:20913:19)
+    at async compilePostCSS (file:///D:/Business/harsh-compa
+ny/node_modules/vite/dist/node/chunks/node.js:20897:6)
+    at async compileCSS (file:///D:/Business/harsh-company/n
+ode_modules/vite/dist/node/chunks/node.js:20827:26)[31m
+    at aggregateBindingErrorsIntoJsError (file:///D:/Busines
+s/harsh-company/node_modules/rolldown/dist/shared/error-CP8s
+mW_P.mjs:48:18)
+    at unwrapBindingResult (file:///D:/Business/harsh-compan
+y/node_modules/rolldown/dist/shared/error-CP8smW_P.mjs:18:12
+8)
+    at #build (file:///D:/Business/harsh-company/node_module
+s/rolldown/dist/shared/rolldown-build-4YnQkA76.mjs:3311:34)
+    at async buildEnvironment (file:///D:/Business/harsh-com
+pany/node_modules/vite/dist/node/chunks/node.js:32794:64)
+    at async Object.build (file:///D:/Business/harsh-company
+/node_modules/vite/dist/node/chunks/node.js:33216:19)
+    at async Object.buildApp (file:///D:/Business/harsh-comp
+any/node_modules/vite/dist/node/chunks/node.js:33213:153)
+    at async CAC.<anonymous> (file:///D:/Business/harsh-comp
+any/node_modules/vite/dist/node/cli.js:778:3) {
+  errors: [Getter/Setter]
+}[39m
