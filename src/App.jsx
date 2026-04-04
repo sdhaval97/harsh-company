@@ -76,9 +76,12 @@ export default function App() {
       {/* Navigation */}
       <nav className={`fixed w-full z-50 transition-all duration-300 border-b ${isScrolled ? 'bg-slate-950/80 backdrop-blur-md border-slate-800 py-4' : 'bg-transparent border-transparent py-6'}`}>
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
-          <div className="text-2xl font-['Outfit'] font-bold tracking-tight bg-gradient-to-r from-teal-400 to-indigo-500 bg-clip-text text-transparent">
+          <button 
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="text-2xl font-['Outfit'] font-bold tracking-tight bg-gradient-to-r from-teal-400 to-indigo-500 bg-clip-text text-transparent cursor-pointer hover:opacity-80 transition-opacity"
+          >
             HB
-          </div>
+          </button>
 
           <div className="hidden md:flex space-x-8 text-sm font-medium">
             <button onClick={() => scrollToSection('about')} className="text-slate-300 hover:text-white transition-colors">About</button>
@@ -185,47 +188,60 @@ export default function App() {
       </section>
 
       {/* About/Experience Section */}
-      <section id="experience" className="py-24 px-6 md:px-12">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-          <div className="relative">
-            <div className="aspect-square rounded-3xl overflow-hidden bg-slate-900 border border-slate-800 relative group">
-              {/* Optional: Add an image here instead of gradient placeholder */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-indigo-900/40 to-teal-900/40 group-hover:scale-105 transition-transform duration-700"></div>
-              <div className="absolute inset-0 flex items-center justify-center p-12 text-center text-slate-500 font-light italic">
-                [Photograph of Harsh Bheda]
-              </div>
-            </div>
-
-            {/* Floating stat card */}
-            <div className="absolute -bottom-8 -right-8 md:-right-12 bg-slate-900 p-6 rounded-2xl border border-slate-800 shadow-xl backdrop-blur-xl">
-              <div className="text-4xl font-bold text-teal-400 mb-1">10+</div>
-              <div className="text-sm font-medium text-slate-400">Years Experience</div>
-            </div>
+      <section id="experience" className="pt-20 pb-16 px-6 md:px-12">
+        <div className="max-w-4xl mx-auto flex flex-col md:items-center">
+          <div className="inline-block px-4 py-1.5 rounded-full bg-teal-500/10 border border-teal-500/20 text-teal-400 text-sm font-semibold tracking-wide mb-6 md:mb-8 self-start md:self-center">
+            7+ Years Experience
           </div>
+          
+          <h2 className="text-3xl md:text-5xl font-['Outfit'] font-bold mb-8 md:text-center">Driving Operational Excellence & Supply Chain Innovation.</h2>
+          
+          <p className="text-slate-300 mb-10 text-base md:text-lg leading-relaxed md:text-center">
+            With deep expertise in biotechnology and pharmaceutical operations, I specialize in scaling technical operations and driving strategic supply chain management. My experience spans advancing first-in-class CRISPR/Cas9 cell and gene therapies to clinical readiness, to implementing robust Lean Six Sigma methodologies for GMP/Non-GMP manufacturing. I have a proven track record of optimizing global procurement, aggressively reducing COGS through rigorous vendor management, and mastering the procure-to-pay cycle. By aligning scientific process development with precise production planning (MRP) and S&OP, I ensure seamless operations and sustainable cost optimization.
+          </p>
 
-          <div>
-            <h2 className="text-3xl md:text-5xl font-['Outfit'] font-bold mb-6">Partnering for true innovation.</h2>
-            <p className="text-slate-300 mb-6 text-lg leading-relaxed">
-              With a deep background in software engineering and technical leadership, I bridge the gap between complex engineering concepts and strategic business outcomes.
-            </p>
-            <p className="text-slate-400 mb-8 leading-relaxed">
-              My approach is hands-on and pragmatic. Whether you're a startup looking to establish a scalable MVP, or an enterprise undergoing modernization, I provide the technical vision and implementation execution to get you there seamlessly.
-            </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 w-full">
+            {[
+              "Production & Supply Planning",
+              "Global Strategic Procurement",
+              "Vendor & Supplier Management",
+              "Cost Optimization (COGS, RFQ)",
+              "Lean Six Sigma & Kaizen",
+              "Cell/Gene Therapy Process Dev",
+              "GMP / Non-GMP Operations",
+              "Procure-to-Pay Cycles"
+            ].map((skill, index) => (
+              <div key={index} className="flex flex-col items-center justify-center gap-3 bg-slate-900/50 hover:bg-slate-800/50 border border-slate-800/50 hover:border-teal-500/30 transition-colors duration-300 rounded-xl p-4 text-center">
+                <div className="w-2 h-2 rounded-full bg-teal-400 flex-shrink-0 shadow-[0_0_8px_rgba(45,212,191,0.8)]"></div>
+                <span className="text-slate-300 text-sm font-medium">{skill}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-            <div className="space-y-4">
-              <div className="flex items-center gap-4 border-b border-slate-800 pb-4">
-                <ChevronRight className="w-5 h-5 text-teal-400" />
-                <span className="text-slate-200">Former Staff Engineer at Top Tier Tech</span>
+      {/* Trust Section */}
+      <section className="py-12 px-6 md:px-12 bg-slate-50 border-y border-slate-200">
+        <div className="max-w-7xl mx-auto flex flex-col items-center">
+          <p className="text-sm font-semibold text-slate-500 mb-8 text-center">
+            Previously Associated With
+          </p>
+          <div className="flex flex-wrap justify-center items-center gap-10 md:gap-20">
+            {[
+              { name: 'MIT', src: '/logos/mit sloan.jpg', className: 'h-[70px] md:h-[80px] mix-blend-multiply' },
+              { name: 'Thermo Fisher', src: '/logos/Thermo Fisher Logo.jpeg', className: 'h-[50px] md:h-[70px] mix-blend-multiply' },
+              { name: 'Be Bio', src: '/logos/be biopharma logo.jpg', className: 'h-[50px] md:h-[70px] mix-blend-multiply' },
+              { name: 'Northeastern University', src: '/logos/Northeastern-University_thumb.png', className: 'h-[70px] md:h-[100px] mix-blend-multiply' },
+              { name: 'Resolute Marine Energy', src: '/logos/resolute marine energy.png', className: 'h-[70px] md:h-[100px] mix-blend-multiply' }
+            ].map((logo, index) => (
+              <div key={index} className="flex items-center justify-center transform hover:scale-105 transition-all duration-300 opacity-80 hover:opacity-100">
+                <img 
+                  src={logo.src} 
+                  alt={`${logo.name} logo`} 
+                  className={`w-auto object-contain ${logo.className}`}
+                />
               </div>
-              <div className="flex items-center gap-4 border-b border-slate-800 pb-4">
-                <ChevronRight className="w-5 h-5 text-teal-400" />
-                <span className="text-slate-200">Cloud Certified Architect (AWS, GCP)</span>
-              </div>
-              <div className="flex items-center gap-4 pb-4">
-                <ChevronRight className="w-5 h-5 text-teal-400" />
-                <span className="text-slate-200">Speaker at international developer conferences</span>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
