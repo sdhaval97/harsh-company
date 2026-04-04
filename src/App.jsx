@@ -7,6 +7,7 @@ import {
   Rocket,
   Terminal,
   ChevronRight,
+  ChevronDown,
   Mail,
   Linkedin,
   Github,
@@ -18,6 +19,7 @@ import {
 export default function App() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeAccordion, setActiveAccordion] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,34 +39,34 @@ export default function App() {
 
   const services = [
     {
-      icon: <Lightbulb className="w-8 h-8 text-teal-400" />,
-      title: "Tech Strategy",
-      description: "Aligning your technology infrastructure with business goals to drive growth, efficiency, and scalability."
+      title: "1. Assessment",
+      description: "We begin with an honest conversation about your business issues and goals to determine where improvements can be made. I utilize key performance tools to minimize emotion and maximize production.",
+      points: [
+        "Sales Channels and Growth Analysis",
+        "Cost of Goods Sold (COGS) Analysis",
+        "Core vs. Non-core Product Analysis",
+        "Perceived Capacity Constraints"
+      ]
     },
     {
-      icon: <Cpu className="w-8 h-8 text-indigo-400" />,
-      title: "Architecture Design",
-      description: "Designing robust, highly available, and secure system architectures for web and mobile platforms."
+      title: "2. Strategy Development",
+      description: "Connecting dots is not always obvious. Sometimes you need an outside perspective. After an assessment, I'll develop a long-term strategy and recommend immediate short-term needs that take into consideration:",
+      points: [
+        "Agile Methodology & Lean Operations",
+        "Positive People Culture",
+        "Total Cost vs. Value Analysis",
+        "Supply Chain Rationalization"
+      ]
     },
     {
-      icon: <Rocket className="w-8 h-8 text-rose-400" />,
-      title: "Digital Transformation",
-      description: "Modernizing legacy systems and adopting cutting-edge technologies to keep you ahead of the curve."
+      title: "3. Business Case",
+      description: "Once a strategy has been developed, I make formal recommendations that include a comprehensive analysis to meet executive and stakeholder expectations. I understand the importance of having all teams on board.",
+      points: []
     },
     {
-      icon: <Code2 className="w-8 h-8 text-amber-400" />,
-      title: "Custom Development",
-      description: "End-to-end software development using modern frameworks, ensuring maintainable and scalable codebases."
-    },
-    {
-      icon: <Globe className="w-8 h-8 text-emerald-400" />,
-      title: "Cloud Solutions",
-      description: "Cloud migration and infrastructure optimization across AWS, Azure, and Google Cloud Platform."
-    },
-    {
-      icon: <Terminal className="w-8 h-8 text-purple-400" />,
-      title: "Technical Audits",
-      description: "Comprehensive review of your existing codebase, security practices, and deployment pipelines."
+      title: "4. Delivery",
+      description: "We decide the best next step after delivering an executive proposal. I can continue working with your team to ensure process improvements are seamlessly implemented and remain 'on-call' for any future needs.",
+      points: []
     }
   ];
 
@@ -106,50 +108,76 @@ export default function App() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-teal-500/20 rounded-full blur-[120px] -z-10 pointer-events-none"></div>
         <div className="absolute top-1/3 left-1/4 w-[400px] h-[400px] bg-indigo-500/20 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
 
-        <div className="inline-block mb-6 px-4 py-1.5 rounded-full border border-slate-800 bg-slate-900/50 backdrop-blur-md text-sm font-medium text-teal-400">
-          Available for new opportunities in Q4 2026
+        {/* Placeholder Photo */}
+        <div className="w-40 h-40 rounded-full border-4 border-slate-800 bg-slate-900 flex items-center justify-center mb-8 shadow-2xl relative overflow-hidden group">
+          <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/20 to-purple-500/20 group-hover:scale-110 transition-transform duration-500"></div>
+          <span className="text-slate-500 text-sm font-medium z-10">Photo Placeholder</span>
         </div>
 
         <h1 className="text-5xl md:text-7xl font-['Outfit'] font-extrabold tracking-tight mb-8 leading-[1.1]">
-          Architecting the future of <br className="hidden md:block" />
-          <span className="bg-gradient-to-r from-teal-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">digital businesses.</span>
+          Hi, I am <span className="bg-gradient-to-r from-teal-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">Harsh Bheda</span>
         </h1>
 
-        <p className="text-lg md:text-xl text-slate-400 max-w-2xl mb-12 font-light">
-          I'm Harsh Bheda. I help companies navigate complex technical challenges, build scalable architectures, and accelerate their digital transformation journey.
-        </p>
+        <h2 className="text-2xl md:text-3xl font-bold text-slate-200 tracking-wide mb-12">
+          I help you scale business processes
+        </h2>
 
         <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-          <button onClick={() => scrollToSection('contact')} className="group px-8 py-4 bg-white text-slate-950 rounded-lg font-medium flex items-center justify-center gap-2 hover:bg-slate-200 transition-all">
-            Let's Talk <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </button>
-          <button onClick={() => scrollToSection('services')} className="px-8 py-4 bg-slate-900 border border-slate-800 rounded-lg font-medium hover:bg-slate-800 transition-all">
-            Explore Services
+          <a href="https://www.linkedin.com/in/hrbheda/" target="_blank" rel="noopener noreferrer" className="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-medium flex items-center justify-center gap-3 transition-colors shadow-lg shadow-blue-500/20">
+            <Linkedin className="w-5 h-5" fill="currentColor" />
+            Connect with me on LinkedIn
+          </a>
+          <button onClick={() => scrollToSection('services')} className="px-8 py-4 bg-slate-900 border border-slate-700 hover:border-slate-500 text-slate-300 hover:text-white hover:bg-slate-800 rounded-full font-medium flex items-center justify-center gap-2 transition-all">
+            Show me how <ChevronDown className="w-5 h-5" />
           </button>
         </div>
       </section>
 
       {/* Services Section */}
       <section id="services" className="py-24 px-6 md:px-12 bg-slate-900/50">
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-16 md:flex justify-between items-end">
-            <div>
-              <h2 className="text-3xl md:text-5xl font-['Outfit'] font-bold mb-4">Areas of Expertise</h2>
-              <p className="text-slate-400 max-w-xl text-lg">Delivering robust, scalable, and forward-thinking solutions tailored to your unique business needs.</p>
-            </div>
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-sm font-bold tracking-widest text-teal-400 uppercase mb-3">Tailored Solutions</h2>
+            <h3 className="text-3xl md:text-5xl font-['Outfit'] font-bold text-white mb-6">A 4-Step Process for Positive Impact</h3>
+            <p className="text-slate-400 text-lg leading-relaxed">
+              Consulting services are unique. My process leverages speed in assessment and implementation to help you quickly take advantage of your greatest opportunities and realize ROI.
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="space-y-4">
             {services.map((service, index) => (
-              <div key={index} className="group p-8 rounded-2xl bg-slate-900 border border-slate-800 hover:border-slate-700 hover:bg-slate-800/80 transition-all duration-300 relative overflow-hidden">
-                <div className="absolute top-0 right-0 p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300 translate-x-4 -translate-y-4 group-hover:translate-x-0 group-hover:translate-y-0">
-                  <div className="w-24 h-24 bg-gradient-to-br from-white/5 to-transparent rounded-full blur-xl"></div>
+              <div key={index} className={`border ${activeAccordion === index ? 'border-teal-500/50 bg-slate-800/80 shadow-lg shadow-teal-900/20' : 'border-slate-800 bg-slate-900/50 hover:bg-slate-800/80'} rounded-2xl overflow-hidden transition-all duration-300`}>
+                <button 
+                  onClick={() => setActiveAccordion(activeAccordion === index ? null : index)}
+                  className="w-full text-left px-6 md:px-8 py-6 flex justify-between items-center outline-none"
+                >
+                  <span className={`text-xl font-semibold md:text-2xl transition-colors ${activeAccordion === index ? 'text-white' : 'text-slate-300'}`}>
+                    {service.title}
+                  </span>
+                  <div className={`flex-shrink-0 ml-4 p-2 rounded-full transition-transform duration-300 ${activeAccordion === index ? 'rotate-180 bg-teal-500/20 text-teal-400' : 'bg-slate-800 text-slate-400 group-hover:bg-slate-700'}`}>
+                    <ChevronDown className="w-5 h-5" />
+                  </div>
+                </button>
+                
+                <div 
+                  className={`overflow-hidden transition-all duration-500 ease-in-out ${activeAccordion === index ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}
+                >
+                  <div className="px-6 md:px-8 pb-8 pt-2 border-t border-slate-700/50">
+                    <p className="text-slate-300 leading-relaxed mb-4 text-lg">
+                      {service.description}
+                    </p>
+                    {service.points && service.points.length > 0 && (
+                      <ul className="space-y-3 mt-4">
+                        {service.points.map((point, i) => (
+                          <li key={i} className="flex items-start gap-4" >
+                            <div className="mt-2 w-2 h-2 rounded-full bg-teal-400 flex-shrink-0 shadow-[0_0_8px_rgba(45,212,191,0.8)]"></div>
+                            <span className="text-slate-400 text-base">{point}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
                 </div>
-                <div className="mb-6 inline-block p-3 rounded-xl bg-slate-950/50 ring-1 ring-white/10 group-hover:ring-white/20 transition-all">
-                  {service.icon}
-                </div>
-                <h3 className="text-xl font-semibold mb-3 text-white">{service.title}</h3>
-                <p className="text-slate-400 leading-relaxed text-sm">{service.description}</p>
               </div>
             ))}
           </div>
