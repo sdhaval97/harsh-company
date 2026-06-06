@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import coverImage from './assets/cover-image.jpeg';
 import {
   Code2,
   Cpu,
@@ -110,10 +111,8 @@ export default function App() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-teal-500/20 rounded-full blur-[120px] -z-10 pointer-events-none"></div>
         <div className="absolute top-1/3 left-1/4 w-[400px] h-[400px] bg-indigo-500/20 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
 
-        {/* Placeholder Photo */}
-        <div className="w-40 h-40 rounded-full border-4 border-slate-800 bg-slate-900 flex items-center justify-center mb-8 shadow-2xl relative overflow-hidden group">
-          <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/20 to-purple-500/20 group-hover:scale-110 transition-transform duration-500"></div>
-          <span className="text-slate-500 text-sm font-medium z-10">Photo Placeholder</span>
+        <div className="w-40 h-40 rounded-full border-4 border-slate-800 mb-8 shadow-2xl relative overflow-hidden">
+          <img src={coverImage} alt="Harsh Bheda" className="w-full h-full object-cover" />
         </div>
 
         <h1 className="text-5xl md:text-7xl font-['Outfit'] font-extrabold tracking-tight mb-8 leading-[1.1]">
