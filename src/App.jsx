@@ -20,6 +20,7 @@ export default function App() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeAccordion, setActiveAccordion] = useState(0);
+  const [activeSkill, setActiveSkill] = useState(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -134,57 +135,6 @@ export default function App() {
         </div>
       </section>
 
-      {/* Services Section */}
-      <section id="services" className="py-24 px-6 md:px-12 bg-slate-900/50">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-sm font-bold tracking-widest text-teal-400 uppercase mb-3">Tailored Solutions</h2>
-            <h3 className="text-3xl md:text-5xl font-['Outfit'] font-bold text-white mb-6">A 4-Step Process for Positive Impact</h3>
-            <p className="text-slate-400 text-lg leading-relaxed">
-              Consulting services are unique. My process leverages speed in assessment and implementation to help you quickly take advantage of your greatest opportunities and realize ROI.
-            </p>
-          </div>
-
-          <div className="space-y-4">
-            {services.map((service, index) => (
-              <div key={index} className={`border ${activeAccordion === index ? 'border-teal-500/50 bg-slate-800/80 shadow-lg shadow-teal-900/20' : 'border-slate-800 bg-slate-900/50 hover:bg-slate-800/80'} rounded-2xl overflow-hidden transition-all duration-300`}>
-                <button 
-                  onClick={() => setActiveAccordion(activeAccordion === index ? null : index)}
-                  className="w-full text-left px-6 md:px-8 py-6 flex justify-between items-center outline-none"
-                >
-                  <span className={`text-xl font-semibold md:text-2xl transition-colors ${activeAccordion === index ? 'text-white' : 'text-slate-300'}`}>
-                    {service.title}
-                  </span>
-                  <div className={`flex-shrink-0 ml-4 p-2 rounded-full transition-transform duration-300 ${activeAccordion === index ? 'rotate-180 bg-teal-500/20 text-teal-400' : 'bg-slate-800 text-slate-400 group-hover:bg-slate-700'}`}>
-                    <ChevronDown className="w-5 h-5" />
-                  </div>
-                </button>
-                
-                <div 
-                  className={`overflow-hidden transition-all duration-500 ease-in-out ${activeAccordion === index ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}
-                >
-                  <div className="px-6 md:px-8 pb-8 pt-2 border-t border-slate-700/50">
-                    <p className="text-slate-300 leading-relaxed mb-4 text-lg">
-                      {service.description}
-                    </p>
-                    {service.points && service.points.length > 0 && (
-                      <ul className="space-y-3 mt-4">
-                        {service.points.map((point, i) => (
-                          <li key={i} className="flex items-start gap-4" >
-                            <div className="mt-2 w-2 h-2 rounded-full bg-teal-400 flex-shrink-0 shadow-[0_0_8px_rgba(45,212,191,0.8)]"></div>
-                            <span className="text-slate-400 text-base">{point}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* About/Experience Section */}
       <section id="experience" className="pt-20 pb-16 px-6 md:px-12">
         <div className="max-w-4xl mx-auto flex flex-col md:items-center">
@@ -192,29 +142,114 @@ export default function App() {
             7+ Years Experience
           </div>
           
-          <h2 className="text-3xl md:text-5xl font-['Outfit'] font-bold mb-8 md:text-center">Driving Operational Excellence & Supply Chain Innovation.</h2>
-          
-          <p className="text-slate-300 mb-10 text-base md:text-lg leading-relaxed md:text-center">
-            With deep expertise in biotechnology and pharmaceutical operations, I specialize in scaling technical operations and driving strategic supply chain management. My experience spans advancing first-in-class CRISPR/Cas9 cell and gene therapies to clinical readiness, to implementing robust Lean Six Sigma methodologies for GMP/Non-GMP manufacturing. I have a proven track record of optimizing global procurement, aggressively reducing COGS through rigorous vendor management, and mastering the procure-to-pay cycle. By aligning scientific process development with precise production planning (MRP) and S&OP, I ensure seamless operations and sustainable cost optimization.
-          </p>
+          <h2 className="text-3xl md:text-5xl font-['Outfit'] font-bold mb-4 md:text-center">Driving Operational Excellence & Supply Chain Innovation.</h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 w-full">
-            {[
-              "Production & Supply Planning",
-              "Global Strategic Procurement",
-              "Vendor & Supplier Management",
-              "Cost Optimization (COGS, RFQ)",
-              "Lean Six Sigma & Kaizen",
-              "Cell/Gene Therapy Process Dev",
-              "GMP / Non-GMP Operations",
-              "Procure-to-Pay Cycles"
-            ].map((skill, index) => (
-              <div key={index} className="flex flex-col items-center justify-center gap-3 bg-slate-900/50 hover:bg-slate-800/50 border border-slate-800/50 hover:border-teal-500/30 transition-colors duration-300 rounded-xl p-4 text-center">
-                <div className="w-2 h-2 rounded-full bg-teal-400 flex-shrink-0 shadow-[0_0_8px_rgba(45,212,191,0.8)]"></div>
-                <span className="text-slate-300 text-sm font-medium">{skill}</span>
-              </div>
-            ))}
-          </div>
+          <p className="text-slate-400 text-lg mb-10 md:text-center">7 years across pharma, biotech, and supply chain — from lab bench to boardroom.</p>
+
+          {(() => {
+            const skillCategories = [
+              {
+                label: "Pharma / Biotech",
+                points: [
+                  { title: "Upstream & Midstream Process Development", desc: "Designing and optimizing cell culture and fermentation workflows from seed train through to harvest." },
+                  { title: "CMC & Tech MSAT / Tech Transfer", desc: "Managing chemistry, manufacturing & controls documentation and coordinating technology transfers between development and manufacturing sites." },
+                  { title: "GMP / Non-GMP Ops", desc: "Running compliant manufacturing operations across both regulated GMP and non-regulated environments." },
+                  { title: "Multi-Product / Multi-Client Operations", desc: "Coordinating simultaneous production campaigns for multiple products and clients within shared facilities." },
+                  { title: "IQ / OQ / PQ Qualification", desc: "Executing installation, operational, and performance qualification protocols for equipment and processes." },
+                  { title: "Clinical Supply Chain", desc: "Managing end-to-end supply of investigational materials to support clinical trial timelines and compliance." },
+                  { title: "CGT – 0.01 to 2000 L Cultures", desc: "Scaling cell and gene therapy processes across a broad range of bioreactor formats, both static and agitated." },
+                ]
+              },
+              {
+                label: "Engineering / Supply Chain",
+                points: [
+                  { title: "Facility Design", desc: "Planning and designing manufacturing and lab spaces for compliance, efficiency, and future scalability." },
+                  { title: "Multi-Product / Multi-Client Operations", desc: "Building flexible facility layouts to support concurrent production campaigns without cross-contamination risk." },
+                  { title: "Site Automation Integration", desc: "Implementing MES, SCADA, and automation platforms to connect and streamline production workflows." },
+                  { title: "Asset & Maintenance Management", desc: "Overseeing equipment lifecycle, preventive maintenance programs, and reliability tracking." },
+                  { title: "Production Planning", desc: "Building and managing production schedules aligned with demand forecasts, capacity, and S&OP cycles." },
+                ]
+              },
+              {
+                label: "Lean / Six Sigma",
+                points: [
+                  { title: "CAPA", desc: "Designing corrective and preventive action systems to resolve quality deviations and prevent recurrence." },
+                  { title: "Change Management & Change Controls", desc: "Structuring formal processes to assess, approve, and document operational and process changes." },
+                  { title: "Root Cause Analysis (RCA)", desc: "Applying structured problem-solving methods — fishbone, 5-Why, fault tree — to identify and eliminate issue sources." },
+                  { title: "Kaizen / A3", desc: "Facilitating continuous improvement workshops and structured A3 problem-solving to drive measurable process gains." },
+                  { title: "5S – Facility Flow & Layout", desc: "Implementing workplace organization principles to improve safety, reduce waste, and enhance visual management." },
+                ]
+              },
+              {
+                label: "Procurement / Finance",
+                points: [
+                  { title: "Procure-to-Pay (Coupa)", desc: "Managing end-to-end purchasing workflows — requisition through payment — using Coupa and related platforms." },
+                  { title: "BOMs / COGS", desc: "Building accurate bills of materials and modeling cost of goods sold to support product costing and financial planning." },
+                  { title: "Procurement Tool Implementation", desc: "Deploying and configuring enterprise procurement systems including SAP and Coupa across organizations." },
+                  { title: "S&OP", desc: "Running integrated sales and operations planning cycles to align supply capacity with business demand." },
+                  { title: "Cost Optimization – RFP / RFQ", desc: "Driving cost reduction through competitive bidding, spend analysis, and structured vendor negotiations." },
+                  { title: "Global Strategic Procurement", desc: "Managing international supplier relationships and developing sourcing strategies across multiple regions." },
+                ]
+              },
+            ];
+            return (
+              <>
+                <div className="flex flex-wrap justify-center gap-3 mb-10">
+                  {skillCategories.map((category, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setActiveSkill(index)}
+                      className="px-8 py-4 rounded-full border-2 font-bold text-base transition-all duration-300 bg-slate-900/50 border-slate-700 text-slate-300 hover:border-teal-500/50 hover:text-white hover:bg-slate-800/50"
+                    >
+                      {category.label}
+                    </button>
+                  ))}
+                </div>
+
+                <div className="flex flex-col sm:flex-row items-center gap-4">
+                  <a href="https://www.linkedin.com/in/hrbheda/" target="_blank" rel="noopener noreferrer" className="px-7 py-3.5 bg-teal-500 hover:bg-teal-400 text-slate-950 rounded-full font-semibold transition-colors flex items-center gap-2 shadow-lg shadow-teal-500/20">
+                    Let's Work Together <ArrowRight className="w-4 h-4" />
+                  </a>
+                  <button onClick={() => scrollToSection('contact')} className="px-7 py-3.5 border border-slate-700 hover:border-slate-500 text-slate-400 hover:text-white rounded-full font-semibold transition-colors">
+                    Get in Touch
+                  </button>
+                </div>
+
+                {activeSkill !== null && (
+                  <div
+                    className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm"
+                    onClick={() => setActiveSkill(null)}
+                  >
+                    <div
+                      className="relative bg-slate-900 border border-slate-700 rounded-3xl w-full max-w-2xl max-h-[85vh] overflow-y-auto shadow-2xl shadow-slate-950/50"
+                      onClick={e => e.stopPropagation()}
+                    >
+                      <div className="sticky top-0 bg-slate-900 border-b border-slate-800 px-8 py-5 flex items-center justify-between rounded-t-3xl">
+                        <h3 className="text-xl font-bold text-white">{skillCategories[activeSkill].label}</h3>
+                        <button
+                          onClick={() => setActiveSkill(null)}
+                          className="p-2 rounded-full text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+                        >
+                          <X className="w-5 h-5" />
+                        </button>
+                      </div>
+                      <ul className="px-8 py-6 space-y-5">
+                        {skillCategories[activeSkill].points.map((point, i) => (
+                          <li key={i} className="flex items-start gap-4">
+                            <div className="mt-1.5 w-2 h-2 rounded-full bg-teal-400 flex-shrink-0 shadow-[0_0_8px_rgba(45,212,191,0.8)]"></div>
+                            <div>
+                              <p className="text-white font-semibold text-sm mb-1">{point.title}</p>
+                              <p className="text-slate-400 text-sm leading-relaxed">{point.desc}</p>
+                            </div>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                )}
+              </>
+            );
+          })()}
         </div>
       </section>
 
@@ -238,6 +273,57 @@ export default function App() {
                   alt={`${logo.name} logo`} 
                   className={`w-auto object-contain ${logo.className}`}
                 />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section id="services" className="py-24 px-6 md:px-12 bg-slate-900/50">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-sm font-bold tracking-widest text-teal-400 uppercase mb-3">Tailored Solutions</h2>
+            <h3 className="text-3xl md:text-5xl font-['Outfit'] font-bold text-white mb-6">A 4-Step Process for Positive Impact</h3>
+            <p className="text-slate-400 text-lg leading-relaxed">
+              Consulting services are unique. My process leverages speed in assessment and implementation to help you quickly take advantage of your greatest opportunities and realize ROI.
+            </p>
+          </div>
+
+          <div className="space-y-4">
+            {services.map((service, index) => (
+              <div key={index} className={`border ${activeAccordion === index ? 'border-teal-500/50 bg-slate-800/80 shadow-lg shadow-teal-900/20' : 'border-slate-800 bg-slate-900/50 hover:bg-slate-800/80'} rounded-2xl overflow-hidden transition-all duration-300`}>
+                <button
+                  onClick={() => setActiveAccordion(activeAccordion === index ? null : index)}
+                  className="w-full text-left px-6 md:px-8 py-6 flex justify-between items-center outline-none"
+                >
+                  <span className={`text-xl font-semibold md:text-2xl transition-colors ${activeAccordion === index ? 'text-white' : 'text-slate-300'}`}>
+                    {service.title}
+                  </span>
+                  <div className={`flex-shrink-0 ml-4 p-2 rounded-full transition-transform duration-300 ${activeAccordion === index ? 'rotate-180 bg-teal-500/20 text-teal-400' : 'bg-slate-800 text-slate-400 group-hover:bg-slate-700'}`}>
+                    <ChevronDown className="w-5 h-5" />
+                  </div>
+                </button>
+
+                <div
+                  className={`overflow-hidden transition-all duration-500 ease-in-out ${activeAccordion === index ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}
+                >
+                  <div className="px-6 md:px-8 pb-8 pt-2 border-t border-slate-700/50">
+                    <p className="text-slate-300 leading-relaxed mb-4 text-lg">
+                      {service.description}
+                    </p>
+                    {service.points && service.points.length > 0 && (
+                      <ul className="space-y-3 mt-4">
+                        {service.points.map((point, i) => (
+                          <li key={i} className="flex items-start gap-4" >
+                            <div className="mt-2 w-2 h-2 rounded-full bg-teal-400 flex-shrink-0 shadow-[0_0_8px_rgba(45,212,191,0.8)]"></div>
+                            <span className="text-slate-400 text-base">{point}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                </div>
               </div>
             ))}
           </div>
