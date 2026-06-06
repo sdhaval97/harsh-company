@@ -10,7 +10,6 @@ import {
   ChevronDown,
   Mail,
   Linkedin,
-  Github,
   Menu,
   X,
   ArrowRight
@@ -258,15 +257,12 @@ export default function App() {
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center items-center gap-6">
-            <a href="mailto:hello@harshbheda.example.com" className="px-8 py-4 bg-teal-500 hover:bg-teal-400 text-slate-950 rounded-lg font-semibold transition-colors flex items-center gap-2 w-full sm:w-auto justify-center">
-              hello@harshbheda.example.com
+            <a href="mailto:hrbheda@outlook.com" className="px-8 py-4 bg-teal-500 hover:bg-teal-400 text-slate-950 rounded-lg font-semibold transition-colors flex items-center gap-2 w-full sm:w-auto justify-center">
+              hrbheda@outlook.com
             </a>
             <div className="flex items-center gap-4">
-              <a href="#" className="p-4 rounded-lg bg-slate-900 border border-slate-800 hover:bg-slate-800 hover:text-white text-slate-400 transition-colors">
+              <a href="https://www.linkedin.com/in/hrbheda/" target="_blank" rel="noopener noreferrer" className="p-4 rounded-lg bg-slate-900 border border-slate-800 hover:bg-slate-800 hover:text-white text-slate-400 transition-colors">
                 <Linkedin className="w-6 h-6" />
-              </a>
-              <a href="#" className="p-4 rounded-lg bg-slate-900 border border-slate-800 hover:bg-slate-800 hover:text-white text-slate-400 transition-colors">
-                <Github className="w-6 h-6" />
               </a>
             </div>
           </div>
